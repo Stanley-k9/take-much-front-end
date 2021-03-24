@@ -14,7 +14,6 @@ import { ProductService } from '../service/product.service';
 export class HomeComponent implements OnInit {
 
 @ViewChild(HeaderComponent) child;
- //products:ProductModelSever[] = [];
   products:any[];
   loading = false;
   
@@ -24,28 +23,19 @@ export class HomeComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(){
-    this.productService.getAllProducts(5).subscribe((prods : any) =>{
+    this.productService.getAllProducts().subscribe((prods : any) =>{
       this.products = prods;
-      //console.log("products",prods);
+      console.log(prods);
     },(error) =>{
 
     });
   }
 
 
-  // searching(){
-  //   if(this.child.title == " "){
-  //     this.ngOnInit();
-  //   }else{
-  //     this.products = this.products.filter( prods =>{
-  //       //console.log(prods);
-  //       return prods.title.toLocaleLowerCase().match(this.child.title.toLocaleLowerCase());
-  //     })
-  //   }
-  // }
 
 
   selectProduct(id: number){
+
 this.router.navigate(['/product',id]).then();
 
   }

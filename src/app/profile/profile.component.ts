@@ -19,25 +19,12 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //location.reload();
 
-    /*this.userService.userData$
-      .pipe(
-        map((user: SocialUser | ResponseModel) => {
-          if (user instanceof SocialUser || user.type === 'social') {
-            return {
-              ...user,
-              email: 'test@test.com',
+ 
 
-            };
-          } else {
-            return user;
-          }
-        })
-      )
-      .subscribe((data: ResponseModel | SocialUser) => {
-        this.myUser = data;
-      });*/
+  
+    
+
       this.myUser =JSON.parse( localStorage.getItem("user"));
       
       //console.log(this.myUser);
@@ -46,5 +33,7 @@ export class ProfileComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.router.navigateByUrl ("/login");
+    window.location.href = "/login";
+
   }
 }

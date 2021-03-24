@@ -1,0 +1,178 @@
+  
+  
+  
+  <!--showing all products and be able oto delete products-->
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-12">
+        <div class="alert alert-danger" [hidden]="!hasError">
+          {{ errorMessage }}
+        </div>
+        <div class="alert alert-success" [hidden]="!success">
+          {{ errorMessage }}
+        </div>
+      </div>
+      <div class="col">
+        <button href="#" class="btn btn-sm btn-info btn-lg glyphicon glyphicon-edit " (click)="open(producta)"> Add product</button>
+
+        <table class="table table-bordered">
+          <thead class="bg-dark text-light">
+          <tr>
+            <th>Id</th>
+            <th width="20%">Name</th>
+            <th width="40%">Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Operation</th>
+          </tr>
+          </thead>
+  
+          <tbody>
+          <tr *ngFor="let p of products">
+            <td>{{ p.id }}</td>
+            <td>{{ p.title }}</td>
+            <td>{{ p.description }}</td>
+            <td>{{ p.price | currency:'R' }}</td>
+            <td>{{ p.quantity }}</td>
+            <td>
+              <button href="#" class="btn btn-sm btn-danger glyphicon glyphicon-trash" (click)="deleteProduct(p.id)"> Delete</button>
+              <button href="#" class="btn btn-sm btn-info btn-lg glyphicon glyphicon-edit " (click)="selectProduct(p.id)" (click)="open(content)"> Edit </button>
+
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+  <ng-template #producta let-model>
+    <div class="modal-body">
+     
+
+
+      
+          <ng-container *ngIf="errorMessage?.length > 0">
+            <div class="alert alert-danger alert-dismissible text-center">
+              {{errorMessage}}
+            </div>
+          </ng-container>
+
+          <form novalidate #myform="ngForm">
+            <div class="form-group">
+              <label for="title">name</label>
+              <input class="form-control" id="title" type="title" [(ngModel)]="title" name="title" required>
+            </div>
+  
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input class="form-control" id="description" type="description" [(ngModel)]="description" name="description" required>
+            </div>
+
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input class="form-control" id="price" type="price" [(ngModel)]="price" name="price" required>
+            </div>
+
+            <div class="form-group">
+              <label for="quantity">quantity</label>
+              <input class="form-control" id="quantity" type="quantity" [(ngModel)]="quantity" name="quantity" required>
+            </div>
+
+            <div class="form-group" >
+              <label for="cat_id_cat_id">category</label>
+              <select class="form-control"  id="cat_id_cat_id" type="cat_id_cat_id" name="cat_id_cat_id" [(ngModel)]="cat_id_cat_id" required>
+                  <option disabled="disabled" selected="selected">Choose option</option>
+                  <option *ngFor= "let p of category" [value] = "p.cat_id" >{{p.cat_title}}</option>
+               
+                  
+              </select>
+          </div>
+      
+
+        <!--
+            <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="exampleInputFile">
+                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                  <span class="input-group-text">Upload</span>
+                </div>
+              </div>
+            </div>
+          -->
+
+            <div class="d-flex flex-column align-items-center justify-content-around">
+              <button class="btn btn-primary btn-sm btn-block" (click)="addProduct(myform)" [disabled]="myform.invalid && myform.touched">add product</button>
+              
+            </div>
+          </form>
+  
+  
+      
+     
+  
+  </div>
+  
+</ng-template>
+
+
+
+
+<!--updating a products with a pop up-->
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">update product</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form novalidate #myform2="ngForm">
+        <div class="form-group">
+          <label for="title">name</label>
+          <input class="form-control"  id="title" type="title"  [(ngModel)]="product.title" name="title">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input class="form-control" id="description" type="description" [(ngModel)]="product.description" name="description" >
+        </div>
+
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input class="form-control" id="price" type="price" [(ngModel)]="product.price" name="price" >
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">quantity</label>
+          <input class="form-control" id="quantity" type="quantity" [(ngModel)]="product.quantity" name="quantity" >
+        </div>
+
+        <div class="form-group" >
+          <label for="cat_id_cat_id">category</label>
+          <select class="form-control"  id="cat_id_cat_id" type="cat_id_cat_id" name="cat_id_cat_id" [(ngModel)]="product.cat_id_cat_id" >
+              <option disabled="disabled" selected="selected">Choose option</option>
+              <option *ngFor= "let p of category" [value] = "p.cat_id" >{{p.cat_title}}</option>
+           
+              
+          </select>
+      </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')" (click)="updatingProduct()">Save</button>
+    </div>
+  </ng-template>
+
+
+
+
+
+

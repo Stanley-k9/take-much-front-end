@@ -1,5 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
+import { ProductsComponent } from './admin/products/products.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { DeliveryComponent } from './delivery/delivery.component';
@@ -44,6 +46,12 @@ path: '', component : HomeComponent
 },
 {
   path: 'profile', component: ProfileComponent, canActivate:[ProfileGuard]
+},
+{
+  path: 'admin',component: AdminComponent
+},
+{
+  path: 'admin/products',component: ProductsComponent
 }
 
 

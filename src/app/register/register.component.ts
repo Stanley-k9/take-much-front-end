@@ -10,6 +10,7 @@ import { RegisterService } from '../service/register.service';
 })
 export class RegisterComponent implements OnInit {
 
+  
   password: string;
   email: string;
   username: string;
@@ -28,6 +29,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  
   register(form: NgForm) : void {
     const email = this.email;
     const password = this.password;

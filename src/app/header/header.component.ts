@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
     this.cartService.cartDataObs$.subscribe(data => this.cartData = data);
     this.userService.authState$.subscribe(authstate => this.authState = authstate);
     this.user = JSON.parse( localStorage.getItem("user"));
-    
+    console.log("lets check type",this.user)
   }
 
  search(){

@@ -10,6 +10,8 @@ picture:string
 }
 
 export interface serverResponse{
+    status: string;
+    message: string;
     count:number
     products:ProductModelSever[]
 }

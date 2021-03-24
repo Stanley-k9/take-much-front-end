@@ -57,6 +57,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("isloggedIn","true");
         localStorage.setItem("user",JSON.stringify(data));
         this.router.navigate(["/profile"]);
+        window.location.href = "/profile";
+
       }
       else{
         this.loginMessage = "FAILURE";
@@ -65,18 +67,7 @@ export class LoginComponent implements OnInit {
       this.loginMessage = "FAILURE"
     });
 
-    /*this.userService.loginMessage$.subscribe(msg => {
-      this.loginMessage = msg;
-      if(msg == "SUCCESS")
-      {
-        console.log("msg",msg);
-        this.router.navigateByUrl("/profile");
-      }
-      
-       setTimeout(() => {
-         this.loginMessage = '';
-       }, 2000);
-    });*/
+   
 
 
   }

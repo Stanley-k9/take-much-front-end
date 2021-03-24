@@ -15,12 +15,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SocialAuthServiceConfig, GoogleLoginProvider, SocialLoginModule, SocialAuthService} from 'angularx-social-login';
 import { RegisterComponent } from './register/register.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { OrderComponent } from './order/order.component';
 import { AddressComponent } from './address/address.component';
+import { AdminComponent } from './admin/admin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductsComponent } from './admin/products/products.component';
 
 
 const googleLoginOptions = {
@@ -60,7 +63,9 @@ export function provideConfig() {
     RegisterComponent,
     DeliveryComponent,
     OrderComponent,
-    AddressComponent
+    AddressComponent,
+    AdminComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,9 @@ export function provideConfig() {
     NgxSpinnerModule,
     ToastrModule.forRoot(),
     FormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     {

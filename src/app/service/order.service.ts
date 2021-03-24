@@ -30,8 +30,11 @@ getOrders(){
     getMyOrders(order_Id : any){
       return this.http.get<any>(this.Server_url + '/myOrders/' + order_Id);
         }
-      
+        
 
+        updateStatus(orderDetails){
+          return this.http.post(`${this.Server_url}/updateStatus`,orderDetails);
+        }
   }
   
   

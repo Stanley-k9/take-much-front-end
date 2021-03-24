@@ -12,18 +12,20 @@ export class OrderComponent implements OnInit {
   src:any;
   type=false;
   user:any;
+  order :any;
+  order_details:any;
   constructor(private orderservice : OrderService) { }
 
 
   ngOnInit(): void {
+   
     this.user = JSON.parse( localStorage.getItem("user"));
- console.log("user id",this.user.user_id);
- console.log("role",this.user.type);
-
+   
+    
 if(this.user != null || undefined){
   if(this.user.type == "delivery"){
     this.type = true;
- 
+
     this.orderservice.getOrders().subscribe((prods) =>{
       this.products = prods;
     },(error) =>{
@@ -45,8 +47,16 @@ console.log("else block")
  
 
 
-
   }
+ 
+
+update(order){
+  this.orderservice.updateStatus(order).subscribe((details)=>{
+
+  },(error)=>{
+   // console.log("test error",error);
+  });
+}
 
 
 }
