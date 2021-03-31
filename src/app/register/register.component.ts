@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterService } from '../service/register.service';
 
@@ -21,30 +21,51 @@ export class RegisterComponent implements OnInit {
   type: string;
   role: number;
   registerMessage : String;
+  registerForm: FormGroup;
+  loading:boolean = false;
+  submitted: Boolean = false;
 
 
 
   constructor(private RegisterService : RegisterService,
-              private router : Router) { }
+              private router : Router,
+              private formbuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.registerForm = this.formbuilder.group({
+      firstName:['',Validators.required],
+      lastName:['',Validators.required],
+      password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
+      email:['',[Validators.required,Validators.email]],
+      username:['',Validators.required],
+      type:['',Validators.required],
+
+
+    }
+     )
   }
 
+  get f(){return this.registerForm.controls;}
+
   
-  register(form: NgForm) : void {
-    const email = this.email;
-    const password = this.password;
-    const first_name = this.first_name;
-    const last_name = this.last_name;
-    const username = this.username;
-    const type = this.type;
+  register() : void {
+    this.submitted = true;
+
+    const email = this.f.email.value;
+    const password = this.f.password.value;
+    const first_name = this.f.firstName.value;
+    const last_name = this.f.lastName.value;
+    const username = this.f.username.value;
+    const type = this.f.type.value;
 
 
-    if (form.invalid) {
+    if (this.registerForm.invalid) {
+      this.loading = false;
+      console.log("e tsena mo");
       return;
     }
 
-    form.reset();
+    this.registerForm.reset();
 
     var user = {
       "email":email,
@@ -60,7 +81,7 @@ export class RegisterComponent implements OnInit {
       if(username != null || username != undefined){
         this.registerMessage = "SUCCESSFULLY REGISTERED";
         
-        
+
         setTimeout(() => {
           this.registerMessage = '';
         }, 2000);
@@ -71,9 +92,11 @@ export class RegisterComponent implements OnInit {
 
       }
       else{
+
         this.registerMessage = "FAILURE";
       }
     },(error) =>{
+
       this.registerMessage = "FAILURE"
     });
   }

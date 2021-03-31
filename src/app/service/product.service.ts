@@ -26,6 +26,16 @@ getAllProducts() : Observable<serverResponse>{
           return this.http.get<serverResponse>(`${this.server_url}/products`);
   }
 
+noOfProducts(){
+  return this.http.get<any>(`${this.server_url}/numberOfProducts`);
+}
+
+sales(){
+
+  return this.http.get<any>(`${this.server_url}/sales`)
+}
+
+
   /*get all categories */
 
 getAllCategories():Observable<serverResponse>{

@@ -7,6 +7,8 @@ import {UserService} from '../service/user.service';
   providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
+
+  users : any;
   constructor(private userService: UserService,
               private router: Router) {
   }
@@ -15,16 +17,17 @@ export class AdminGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.userService.userRole === 777) {
+    
+      this.users =JSON.parse( localStorage.getItem("user"));
+
+    
+      if (localStorage.getItem("isloggedIn") && this.users.type == "admin") {
       return true;
-    } else {
-      if (this.userService.auth) {
-        this.router.navigate(['/profile']).then();
-      } else {
-        this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}}).then();
-      }
-      return false;
     }
+         this.router.navigate([''], {queryParams: {returnUrl: state.url}}).then();
+
+      return false;
+    
 
   }
 

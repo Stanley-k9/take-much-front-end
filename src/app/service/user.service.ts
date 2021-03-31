@@ -5,6 +5,7 @@ import {environment} from '../../environments/environment';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import { map} from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
+import { serverResponse } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class UserService {
   userData$ = new BehaviorSubject<SocialUser | ResponseModel | object>(null);
   loginMessage$ = new BehaviorSubject<string>(null);
   userRole: number;
+  noOfUsers : any;
 
   constructor(private authService: SocialAuthService,
               private httpClient: HttpClient) {
@@ -62,10 +64,19 @@ export class UserService {
     .pipe( map( response => response));
 }
 
-// //  Google Authentication
-//   googleLogin() {
-//     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-//   }
+
+noOfCustomers(): Observable<serverResponse>{
+ return this.httpClient.get<serverResponse>(`${this.SERVER_URL}/numberOfCustomer`)
+}
+
+noOfDelivery(){
+  return this.httpClient.get<any>(`${this.SERVER_URL}/numberOfDelivery`)
+}
+
+getUsers(){
+  return this.httpClient.get<any>(`${this.SERVER_URL}/allUsers`)
+}
+
 
   logout() {
     localStorage.clear();

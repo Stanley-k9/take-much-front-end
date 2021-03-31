@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
 
       this.myUser =JSON.parse( localStorage.getItem("user"));
       
-      //console.log(this.myUser);
+      //console.log(localStorage.getItem("user"));
   }
 
   logout() {

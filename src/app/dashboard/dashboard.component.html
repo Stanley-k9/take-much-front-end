@@ -1,0 +1,116 @@
+<div class="row mb-3">
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1">customers</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{noOfCustomers}}</div>
+              <div class="mt-2 mb-0 text-muted text-xs">
+                <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span>Since last month</span> -->
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fa fa-users fa-2x text-primary"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Earnings (Annual) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1">Delevery</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{noOfDeliveries}}</div>
+              <div class="mt-2 mb-0 text-muted text-xs">
+                <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 12%</span>
+                <span>Since last years</span> -->
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fa fa-truck fa-2x text-success"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- New User Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1">Products</div>
+              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{noOfProducts}}</div>
+              <div class="mt-2 mb-0 text-muted text-xs">
+                <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 20.4%</span>
+                <span>Since last month</span> -->
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fa fa-tags fa-2x text-info"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-uppercase mb-1">sales</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{sales}}</div>
+              <div class="mt-2 mb-0 text-muted text-xs">
+                <!-- <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> 1.10%</span>
+                <span>Since yesterday</span> -->
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fa fa-shopping-cart fa-2x text-warning"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Invoice Example -->
+    <div class="col-xl-8 mb-4 align-text-top">
+      <div class="card">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+          <!-- <a class="m-0 float-right btn btn-danger btn-sm" href="#">View More <i class="fa fa-chevron-right"></i></a> -->
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Item</th>
+                <th>Status</th>
+                <!-- <th>Action</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let order of products">
+                <td><a href="#">{{order.orders_id}}</a></td>
+                <td>{{ order.order_id.user_id.username}}</td>
+                <td>{{ order.id.title}}</td>
+                <td><span class="badge ">{{order.status}}</span></td>
+                <!-- <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer"></div>
+      </div>
+    </div>
+
+  </div>

@@ -4,7 +4,8 @@ import { AdminComponent } from './admin/admin.component';
 import { ProductsComponent } from './admin/products/products.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { DeliveryComponent } from './delivery/delivery.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminGuard } from './guard/admin.guard';
 import { ProfileGuard } from './guard/profile.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +14,7 @@ import { ProductComponent } from './product/product.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
 
@@ -39,19 +41,22 @@ path: '', component : HomeComponent
   path: 'register', component: RegisterComponent
 },
 {
-  path: 'delivery', component: DeliveryComponent
-},
-{
   path: 'order', component: OrderComponent
 },
 {
   path: 'profile', component: ProfileComponent, canActivate:[ProfileGuard]
 },
 {
-  path: 'admin',component: AdminComponent
+  path: 'products',component: AdminComponent,canActivate:[AdminGuard]
 },
 {
-  path: 'admin/products',component: ProductsComponent
+  path: 'admin/products',component: ProductsComponent,canActivate:[AdminGuard]
+},
+{
+  path: "dashboard",component: DashboardComponent,canActivate:[AdminGuard]
+},
+{
+  path : "users", component: UsersComponent,canActivate:[AdminGuard]
 }
 
 

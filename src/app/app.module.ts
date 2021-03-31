@@ -18,34 +18,35 @@ import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SocialAuthServiceConfig, GoogleLoginProvider, SocialLoginModule, SocialAuthService} from 'angularx-social-login';
 import { RegisterComponent } from './register/register.component';
-import { DeliveryComponent } from './delivery/delivery.component';
 import { OrderComponent } from './order/order.component';
 import { AddressComponent } from './address/address.component';
 import { AdminComponent } from './admin/admin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsComponent } from './admin/products/products.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UsersComponent } from './users/users.component';
 
 
 const googleLoginOptions = {
   scope: 'profile email'
 };
 
-let config = [
-  {
-    id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("207814764993-9o50jtlucku5aecbio5cd41ak5gc7q6v.apps.googleusercontent.com",googleLoginOptions)
-  }
+// let config = [
+//   {
+//     id: GoogleLoginProvider.PROVIDER_ID,
+//     provider: new GoogleLoginProvider("207814764993-9o50jtlucku5aecbio5cd41ak5gc7q6v.apps.googleusercontent.com",googleLoginOptions)
+//   }
 
-];
-
-
+// ];
 
 
 
 
-export function provideConfig() {
-  return config;
-}
+
+
+// export function provideConfig() {
+//   return config;
+// }
 
 
 @NgModule({
@@ -61,11 +62,12 @@ export function provideConfig() {
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    DeliveryComponent,
     OrderComponent,
     AddressComponent,
     AdminComponent,
-    ProductsComponent
+    ProductsComponent,
+    DashboardComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

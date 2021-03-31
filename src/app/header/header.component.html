@@ -1,17 +1,32 @@
+
+<div class="covid-banner">
+  <br>
+  <strong>Stay informed!</strong> Visit the SA Department of Health's website for COVID-19 updates: 
+    <a href="https://www.sacoronavirus.co.za" target="_blank">www.sacoronavirus.co.za
+    </a><br><br>
+ 
+</div>
+
+
 <!-- HEADER -->
 <div *ngIf = " user === null ||user.type != 'admin'   else adminPage">
 
 <header>
+  
     <!-- TOP HEADER -->
     <div id="top-header">
+      
         <div class="container">
+          
+
+          
             <ul class="header-links pull-left">
               <!--  <li><a href="#"><i class="fa fa-phone"></i> +27123456789</a></li>-->
               <!--  <li><a href="#"><i class="fa fa-envelope-o"></i> takemuch@email.com</a></li>-->
               <!--  <li><a href="#"><i class="fa fa-map-marker"></i> 53 woodlands ave sandton</a></li>-->
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="https://en.wikipedia.org/wiki/South_African_rand"><i class="fa fa-money"></i> ZAR</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/South_African_rand" target="popup"><i class="fa fa-money"></i> ZAR</a></li>
                 <li><a routerLink ="/profile"><i class="fa fa-user-o"></i> {{user == null ?  'Login'  : 'My Acoount'}}</a></li>
             </ul>
         </div>
@@ -54,7 +69,7 @@
                 <!-- ACCOUNT -->
                 <div class="col-md-3 clearfix">
                     <div class="header-ctn">
-                        <!-- Wishlist -->
+                        <!-- Wishlist 
                         <div>
                             <a href="#">
                                 <i class="fa fa-heart-o"></i>
@@ -62,7 +77,7 @@
                                 <div class="qty">0</div>
                             </a>
                         </div>
-                        <!-- /Wishlist -->
+                        /Wishlist -->
 
                         <!-- Cart -->
                         <div class="dropdown">
@@ -228,13 +243,21 @@
       <span>Menu</span>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         
-        <button ngbDropdownItem>Action - 1</button>
-        <button ngbDropdownItem>Another Action</button>
-        <button ngbDropdownItem>Something else is here</button>
-       
-        <a class="dropdown-item" href="#">
+        <!-- <button ngbDropdownItem>Action - 1</button> -->
+        
+        <a class="dropdown-item" href="dashboard">
+          <i class="fa fa-tachometer fa-sm fa-fw mr-2 text-gray-400"></i>
+          dashboard
+        </a>
+
+
+        <a class="dropdown-item" href="users">
+          <i class="fa fa-gift fa-sm fa-fw mr-2 text-gray-400"></i>
+          users
+        </a>
+        <a class="dropdown-item" href="products">
           <i class="fa fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-          Settings
+          products
         </a>
       </div>
     </div>
@@ -265,13 +288,13 @@
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
+                    <i class="fa fa-search fa-sm"></i>
                   </button>
                 </div>
               </form>
             </div>
           </li>
-          <li class="nav-item dropdown no-arrow mx-1">
+          <!-- <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-bell fa-fw"></i>
               <span class="badge badge-danger badge-counter">3+</span>
@@ -315,8 +338,8 @@
               </a>
               <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
             </div>
-          </li>
-          <li class="nav-item dropdown no-arrow mx-1">
+          </li> -->
+          <!-- <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-envelope fa-fw"></i>
               <span class="badge badge-warning badge-counter">2</span>
@@ -391,7 +414,7 @@
               </a>
               <a class="dropdown-item text-center small text-gray-500" href="#">View All Taks</a>
             </div>
-          </li>
+          </li> -->
           <div class="topbar-divider d-none d-sm-block"></div>
           <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -412,7 +435,7 @@
                 Activity Log
               </a> -->
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+              <a class="dropdown-item" href="javascript:void(0);"(click)="logout()" data-toggle="modal" data-target="#logoutModal">
                 <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
                 Logout
               </a>

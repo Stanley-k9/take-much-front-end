@@ -25,6 +25,10 @@ getOrders(){
   return this.http.get<any>(this.Server_url + '/orderDetails');
     }
 
+    allOrders(){
+      return this.http.get<any>(`${this.Server_url}/allOrders`);
+    }
+
 
 
     getMyOrders(order_Id : any){

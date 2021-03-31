@@ -7,51 +7,76 @@
               {{registerMessage}}
             </div>
           </ng-container>
-          <form novalidate #myform="ngForm">
+          <form novalidate  [formGroup]="registerForm">
 
 
             <div class="form-group">
               <label for="first_name">First Name</label>
-              <input class="form-control" id="first_name" type="name" [(ngModel)]="first_name" name="first_name" required>
+              <input class="form-control" id="first_name" type="name"  name="first_name" formControlName="firstName" [ngClass]="{'is-invalid': submitted && f.firstName.errors}">
+              <div *ngIf = "submitted && f.firstName.errors" class ="invalid-feedback">
+                <div *ngIf = f.firstName.errors.required>please enter your First Name</div>
+              </div>
             </div>
   
             <div class="form-group">
                 <label for="last_name">Last Name</label>
-                <input class="form-control" id="last_name" type="name" [(ngModel)]="last_name" name="last_name" required>
+                <input class="form-control" id="last_name" type="name"  name="last_name" formControlName="lastName" [ngClass]="{'is-invalid': submitted && f.lastName.errors}">
+                <div *ngIf = "submitted && f.lastName.errors" class ="invalid-feedback">
+                  <div *ngIf = f.lastName.errors.required>please enter your Last Name</div>
+                </div>
               </div>
     
 
               <div class="form-group">
                 <label for="email">Email</label>
 
-                <input class="form-control" id="email" type="email" [(ngModel)]="email" name="email" required>
+                <input class="form-control" id="email" type="email" name="email"  formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">please enter an email</div>
+                  <div *ngIf="f.email.errors.email"> please enter a valid email address</div>
+                </div>
               </div>
     
             
               <div class="form-group">
                     <label for="type">Role</label>
-                    <select class="form-control"  id="type" type="name" name="type" [(ngModel)]="type" required>
+                    <select class="form-control"  id="type" type="name" name="type"  formControlName="type"  formControlName="type" [ngClass]="{'is-invalid': submitted && f.type.errors}">
                         <option disabled="disabled" selected="selected">Choose option</option>
                         <option>customer</option>
                         <option>delivery</option>
                     </select>
+                    <div *ngIf = "submitted && f.type.errors" class ="invalid-feedback">
+                      <div *ngIf = f.type.errors.required>please please choose an option</div>
+                    </div>
+
                 </div>
             
                 
               <div class="form-group">
                 <label for="username">username</label>
-                <input class="form-control" id="username" type="name" [(ngModel)]="username" name="username" required>
+                <input class="form-control" id="username" type="name" name="username" formControlName= "username" [ngClass]="{'is-invalid': submitted && f.username.errors}">
+                <div *ngIf = "submitted && f.username.errors" class ="invalid-feedback">
+                  <div *ngIf = f.username.errors.required>please enter a username</div>
+                </div>
               </div>
 
 
             <div class="form-group">
               <label for="password">Password</label>
-              <input class="form-control" id="password" type="password" [(ngModel)]="password" name="password" required>
+              <input class="form-control" id="password" type="password" name="password" formControlName="password" [ngClass]="{'is-invalid': submitted && f.password.errors}" >
+            
+            <div *ngIf = "submitted && f.password.errors" class ="invalid-feedback">
+                <div *ngIf = f.password.errors.required>please enter a password</div>
+                <div *ngIf = f.password.errors?.pattern>Password must have At least 8 characters in length Lowercase letters Uppercase letters Numbers Special characters
+
+                </div>
+            </div>
+            
             </div>
 
 
             <div class="d-flex flex-column align-items-center justify-content-around">
-              <button class="btn btn-primary btn-sm btn-block" (click)="register(myform)" [disabled]="myform.invalid && myform.touched">register</button>
+              <button class="btn btn-primary btn-sm btn-block" (click)="register()" [disabled]="loading">register</button>
             <hr>
             <p>already have an Account? <a routerLink ="/login"> Login Now!</a></p>
             </div>
